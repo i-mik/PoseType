@@ -1,0 +1,33 @@
+@font-face {
+    font-family: "SampleFont";
+    src: url("assets/sampleFont.ttf");
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+canvas {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%) scale(50%);
+    opacity: .5
+}
+
+#glyphBox {
+    height: 40em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    left: 50%;
+    transform: translate(-54%, -20%);
+}
+
+#sampleGlyph {
+    font: 40em "SampleFont";
+    font-variation-settings: "SLON"50, "SLTW"50;
+}
