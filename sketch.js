@@ -1,9 +1,3 @@
-/*
-PoseNet Example for Kinetic Type Installation
-based on CodingTrain Tutorial: ml5.js Pose Estimation with PoseNet
-https://www.youtube.com/watch?v=OIo-DIOkNVg
-*/
-
 let video;
 let poseNet;
 let pose;
@@ -22,40 +16,61 @@ function modelLoaded() {
 }
 
 function gotPose(poses) {
-  let confScore = poses[0].pose.score;
   if (poses[0].pose.score >= 0.35) {
     pose = poses[0].pose;
   }
 }
 
+function distKeyPts(keyPtOne, keyPtTwo) {
+  return dist(keyPtOne.x, keyPtOne.y, keyPtTwo.x, keyPtTwo.y);
+}
+
+function angleKeyPts(keyPtOne, keyPtTwo) {
+  v1 = createVector(keyPtOne.x, keyPtOne.y);
+  // Angles still gives back weird values 
+  // it seems to be the wrong calculation
+  return degrees(atan2(keyPtOne.x, keyPtOne.y));
+}
+
+function drawFace() {
+  for (i = 0; i < 5; i++) {
+    let keyPt = pose.keypoints[i];
+    ellipse(keyPt.position.x, keyPt.position.y, 15);
+  }
+}
+
+
 function draw() {
   image(video, 0, 0);
-  filter(GRAY);
+  // filter(GRAY);
+ // background(200)
 
   if (pose) {
-    let wristL = pose.leftWrist;
-    let wristR = pose.rightWrist;
-
     // Calculate distance between Hands an map distance Value to Axes Value between 0 and 100
-    let distantHands = map(dist(wristL.x, wristL.y, wristR.x, wristR.y), 0, width - treshHold, 0, 100);
-    
+    // let distHands = distKeyPts(pose.leftWrist, pose.rightWrist);
+    // distHands = map(distHands, 10, width - treshHold, 0, 100, true);
+
+    // Calculate Angle Between Both Hands
+     let angleHands = angleKeyPts(pose.leftWrist, pose.rightWrist);
+    console.log(angleHands);
+
     // Map the second Axes value to Nose-x position
-    let nosePosition = map(pose.nose.x, 0, height, 0, 100);
-    
+    let nosePosition = map(pose.nose.x, 0, height, 0, 100, true);
+
     // Set up the axes Settings to be put in the CSS-Property
-    let varSettings = '"SLON" ' + nosePosition;
+    let varSettings = '"SLON" ' + angleHands;
     varSettings += ", ";
-    varSettings += '"SLTW" ' + distantHands;
+    varSettings += '"SLTW" ' + nosePosition;
     document.getElementById("sampleGlyph").style.setProperty("font-variation-settings", varSettings);
+    // console.log(varSettings)
 
     // Draw Ellipse at Nose and Wrist Positions
     strokeWeight(0);
     fill(255, 0, 0);
-    ellipse(pose.nose.x, pose.nose.y, 15);
+    drawFace();
 
     fill(0, 0, 255);
-    ellipse(wristL.x, wristL.y, 15)
-    ellipse(wristR.x, wristR.y, 15)
+    ellipse(pose.leftWrist.x, pose.leftWrist.y, 15)
+    ellipse(pose.rightWrist.x, pose.rightWrist.y, 15)
   }
-
 }
