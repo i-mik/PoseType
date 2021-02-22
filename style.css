@@ -1,60 +1,6 @@
 @font-face {
-    font-family: "SampleFont";
-    src: url("/assets/o-rotating-VF.ttf");
-  }
-  
-  html,
-  body {
-      margin: 0;
-      padding: 0;
-  }
-  
-  canvas {
-      position: fixed;
-      top: 70%;
-      left: 50%;
-      transform: translate(200%, 15%) scale(1.2);
-      -webkit-transform: translate(120%, -140%) scale(2.5);
-      opacity: 100%;
-  }
-  
-  #glyphBox { 
-      /*
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      */
-      position: fixed;
-      left: 50%;
-      transform: translate(-120%, 0%);
-      margin-left: 0px;
-      margin-right: 0px;
-  }
-  
-  #bkgGlyph {
-    position: absolute;
-    margin-left: 20px;
-    margin-right: 40px;
-    font-family: sampleFont;
-    font-size: 2000px;
-    font-variation-settings: "AONE" 500, "ATWO" 500;
-    /*color: #41C9E2;*/
-    /*color: #51ffb7;*/
-    color: #FF738A;
-    /* -webkit-text-stroke-width: 5px; */
-  }
-
-  #sampleGlyph {
-    z-index: 9;
-    margin-left: 20px;
-    margin-right: 40px;
-    font-family: sampleFont;
-    font-size: 2000px;
-    font-variation-settings: "AONE" 500, "ATWO" 500;
-    /*color: #F55428;*/
-    /*color: #ffd501;*/
-    /*color: #ff0180;*/ 
-    color: #13CBEC;
-    opacity: 100%;
-    mix-blend-mode: multiply;
-  }
+  font-family: alwynNew;
+  src: url('../Test/fonts/Hagrid-Text-Variable-trial.ttf') format('truetype');
+  font-weight: normal;
+  font-style: sans-serif;
+}
