@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Characters in Motion</title>
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
+
+    <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.sound.min.js"></script>
+    <script src="libraries/quicksettings.js"></script>
+    <script src="libraries/p5.gui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.10.2/p5.js"></script>
+    <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+</head>
+
+<body id="Motion">
+<!--Michas HTML-->
+    <div id="glyphBox">
+        <div id='bkgGlyph'>g</div>
+        <div id='sampleGlyph'>g</div>
+      </div>
+      <script src="sketch.js"></script>
+
+<!--Michas HTML ENDE-->
+    <table width="100%">
+        <tr>
+            <td width="33%">
+                <h3 id="Timer" style="text-align: left;">Timer</h3>
+            </td>
+            <td width="33%">
+                <h1 id="Glyphname" style="text-align: center;">Glyphname</h1>
+            </td>
+            <td width="33%">
+                <h3 id="Score" style="text-align: right;">Score</h3>
+            </td>
+        </tr>
+    </table>
+<footer style="position: absolute;bottom: 0;width:100%">
+    <div width="100%" height="100%" style="text-align: center;">
+        <canvas id="canvas" width="1000px" height="500px"></canvas>
+    </div>
+
+    <table width ="100%">
+        <tr>
+            
+            <td class="slidecontainer" width="33%">
+                <h3 style="text-align:left; width: 100%;">BÄM!</h3> 
+                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                <p> <span id="demo"></span></p>
+            </td>
+            <td></td>
+            
+            <td width="33%">
+                <h3 style="text-align: right;">KABOOM!</h3>
+                <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                <p> <span id="demo"></span></p> 
+            </td>
+        </tr>
+
+    </table>
+</footer>
+    
+
+    <!-- Alternative zu den Slidern
+        
+        <footer  style="position: absolute;bottom: 0;width:100%">
+        <table width="100%">
+        <tr>
+            <td>
+                <input id="Slider1" type="range" name="Slider1" value="50" min="0" max="100"> 
+            </td>
+            <td></td>
+            <td style="text-align: right;">
+                <input id="Slider2" type="range" name="Slider2" value="50" min="0" max="100"> 
+            </td>
+        </tr>
+    </table>
+    </footer> --> 
+
+
+
+</body>
+
+
+<script src="myscript.js"></script>
+
+</html>
