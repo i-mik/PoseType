@@ -1,6 +1,117 @@
 @font-face {
-  font-family: alwynNew;
-  src: url('../Test/fonts/Hagrid-Text-Variable-trial.ttf') format('truetype');
-  font-weight: normal;
-  font-style: sans-serif;
+  font-family: Typofont;
+  src: url(..//fonts/Hagrid-Text-Variable-trial.ttf);
+}
+
+body {
+  background-attachment: fixed;
+  font-family: 'Typofont', Courier, monospace;
+  font-size: 20px;
+  line-height: 1.0;
+  margin: 0 auto;
+  min-width: 700px;
+  max-width: 1400px;
+}
+
+.slidecontainer {
+  width: 33%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 2px; /* Specified height */
+  border-radius: 5px;
+  background: #161515; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  border-radius: 50%;
+  background: #5bddab; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #5bddab; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+/* MICHAS CSS */
+@font-face {
+  font-family: "SampleFont";
+  src: url("/assets/o-rotating-VF.ttf");
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+canvas {
+    position: fixed;
+    top: 70%;
+    left: 50%;
+    transform: translate(200%, 15%) scale(1.2);
+    -webkit-transform: translate(120%, -140%) scale(2.5);
+    opacity: 100%;
+}
+
+#glyphBox { 
+    /*
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    */
+    position: fixed;
+    left: 50%;
+    transform: translate(-120%, 0%);
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+#bkgGlyph {
+  position: absolute;
+  margin-left: 20px;
+  margin-right: 40px;
+  font-family: sampleFont;
+  font-size: 2000px;
+  font-variation-settings: "AONE" 500, "ATWO" 500;
+  /*color: #41C9E2;*/
+  /*color: #51ffb7;*/
+  color: #FF738A;
+  /* -webkit-text-stroke-width: 5px; */
+}
+
+#sampleGlyph {
+  z-index: 9;
+  margin-left: 20px;
+  margin-right: 40px;
+  font-family: sampleFont;
+  font-size: 2000px;
+  font-variation-settings: "AONE" 500, "ATWO" 500;
+  /*color: #F55428;*/
+  /*color: #ffd501;*/
+  /*color: #ff0180;*/ 
+  color: #13CBEC;
+  opacity: 100%;
+  mix-blend-mode: multiply;
 }
