@@ -1,60 +1,66 @@
 @font-face {
-    font-family: "SampleFont";
-    src: url("/assets/o-rotating-VF.ttf");
-  }
-  
-  html,
-  body {
-      margin: 0;
-      padding: 0;
-  }
-  
-  canvas {
-      position: fixed;
-      top: 70%;
-      left: 50%;
-      transform: translate(200%, 15%) scale(1.2);
-      -webkit-transform: translate(120%, -140%) scale(2.5);
-      opacity: 100%;
-  }
-  
-  #glyphBox { 
-      /*
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      */
-      position: fixed;
-      left: 50%;
-      transform: translate(-120%, 0%);
-      margin-left: 0px;
-      margin-right: 0px;
-  }
-  
-  #bkgGlyph {
-    position: absolute;
-    margin-left: 20px;
-    margin-right: 40px;
-    font-family: sampleFont;
-    font-size: 2000px;
-    font-variation-settings: "AONE" 500, "ATWO" 500;
-    /*color: #41C9E2;*/
-    /*color: #51ffb7;*/
-    color: #FF738A;
-    /* -webkit-text-stroke-width: 5px; */
-  }
+  font-family: "playFont";
+  src: url("/fonts/Blinky.ttf");
+}
 
-  #sampleGlyph {
-    z-index: 9;
-    margin-left: 20px;
-    margin-right: 40px;
-    font-family: sampleFont;
-    font-size: 2000px;
-    font-variation-settings: "AONE" 500, "ATWO" 500;
-    /*color: #F55428;*/
-    /*color: #ffd501;*/
-    /*color: #ff0180;*/ 
-    color: #13CBEC;
-    opacity: 100%;
-    mix-blend-mode: multiply;
-  }
+html,
+body {
+  margin: 0;
+  font-size: 800px;
+  font-family: playFont;
+  background-color: black;
+}
+
+#displayArea {
+  position: relative;
+  /* Center the displayArea horizontally */
+  margin: 0 auto;
+
+  /* Calculate Width so it’s always in ratio 4:3, height’s always 100% of viewport */
+  width: calc((100vh / 3) * 4);
+  height: 100vh;
+
+  background-color: #fff;
+}
+
+canvas {
+  height: 480px;
+  width: 640px;
+  position: fixed;
+  top: 85vh;
+  left: 50vw;
+  transform: translate(-50%, -50%) scale(.7);
+  z-index: 1;
+  opacity: 100%;
+}
+
+#glyphBox {
+  /*background-color: #ff0;*/
+  position: fixed;
+  width: calc((100vh / 4) * 4);
+  height: 65vh;
+  top: 2.5vh;
+  left: 50%;
+  transform: translate(-50%);
+  text-align: center;
+}
+
+#bkgGlyph {
+  color: #ff738a;
+  position: absolute;
+  width: calc((100vh / 4) * 4);
+  bottom: 0;
+  z-index: 2;
+  font-variation-settings: "AONE" 500, "ATWO" 500;
+
+}
+
+#activeGlyph {
+  color: #13cbec;
+  position: absolute;
+  width: calc((100vh / 4) * 4);
+  bottom: 0;
+  z-index: 2;
+  font-variation-settings: "AONE" 500, "ATWO" 500;
+  mix-blend-mode: multiply;
+}
