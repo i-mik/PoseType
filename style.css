@@ -1,13 +1,8 @@
-/*@font-face {
-  font-family: "playFont";
-  src: url("/fonts/Blinky.ttf");
-}
-*/
 html,
 body {
   margin: 0;
   font-size: 800px;
-  font-family: playFont;
+  font-family: activeFont;
   background-color: black;
 }
 
