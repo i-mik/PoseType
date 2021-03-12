@@ -4,12 +4,38 @@ let pose;
 let fadeOut;
 let valueOne;
 let valueTwo;
-let fontDegular;
+let reloadTimer;
 
 const xMargin = 100;
 const yMargin = 75;
 const treshHold = 100;
 const offSet = 35;
+reloadTimer = 0;
+
+// Choose random play font on each site reload
+var fontArray = [
+  "AngryU",
+  "Blinky",
+  "CircleAndSquare",
+  "FatSheriff",
+  "FlexK",
+  "InlineA",
+  "RotatO",
+  "SlantedQ",
+  "StachelBallon",
+  "WackelVudding",
+];
+var randomFont = fontArray[Math.floor(Math.random() * fontArray.length)];
+var playFont = new FontFace("playFont", "url(/fonts/" + randomFont + ".ttf)");
+playFont
+  .load()
+  .then(function (loaded_face) {
+    document.fonts.add(loaded_face);
+    document.body.style.fontFamily = "" + playFont + "";
+  })
+  .catch(function (error) {
+    console.log("Error.");
+  });
 
 function setup() {
   var canvas = createCanvas(640, 480);
@@ -17,9 +43,6 @@ function setup() {
   canvas.parent("canvas-holder");
   video = createCapture(VIDEO);
   video.hide();
-
-  poseNet = ml5.poseNet(video, "single", modelLoaded);
-  poseNet.on("pose", gotPose);
 
   // Set up the axes Settings from Bkg-Glyph to be put in the CSS-Property
   valueOne = random(0, 1000);
@@ -30,9 +53,11 @@ function setup() {
     .getElementById("bkgGlyph")
     .style.setProperty("font-variation-settings", newSettings);
 
+  poseNet = ml5.poseNet(video, "single", modelLoaded);
+  poseNet.on("pose", gotPose);
+
   textSize(50);
   textAlign(CENTER, CENTER);
-  // textFont(fontDegular);
 }
 
 function modelLoaded() {
@@ -181,23 +206,27 @@ function draw() {
         strokeWeight(2);
         rect(50, 50, width - 100, height / 2);
     */
-    
+
     if (checkValues(axisOne, axisTwo)) {
       fadeOut = 255;
+      console.log(reloadTimer);
+      if (reloadTimer > 300) {
+        window.location.reload();
+      }
+      reloadTimer += 20;
     }
 
-    
     if (fadeOut > 0) {
-      text('🤨', pose.nose.x, pose.nose.y);
+      text("🤨", pose.nose.x, pose.nose.y);
       fill(0, 0, 0, fadeOut);
       noStroke();
-      text('😎', pose.nose.x, pose.nose.y);
+      text("😎", pose.nose.x, pose.nose.y);
       fadeOut -= 45;
+    } else {
+      text("🤨", pose.nose.x, pose.nose.y);
+      reloadTimer = 0;
     }
-    else {
-      text('🤨', pose.nose.x, pose.nose.y);
-    }
-    
+
     pop();
   }
 }
